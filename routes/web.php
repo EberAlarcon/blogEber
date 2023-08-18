@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Especificar el controlador a utilizar
+use App\Http\Controllers\HomeController;
+
+// Especificar el controlador de CursoController
+use App\Http\Controllers\CursoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return "bienvenido a la pagina proncipal";
-});
+Route::get('/', HomeController::class);
 
-Route::get('cursos', function(){
-    return "Bienvenido a la pagina cursos"; 
-});
 
-Route::get('cursos/{curso}', function($curso){
-    return "Biemnvenido al curso $curso";
+// Crear un grupo de rutas
 
+Route::controller(CursoController::class)-> group(function(){
+
+    Route::get('cursos', 'index');
+
+    Route::get('cursos/create', 'create');
+
+    Route::get('cursos/{curso}', 'show');
+    
+    Route::get('cursos/{cursos}/{categoria?}', 'showsCurses' );
 });

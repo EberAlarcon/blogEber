@@ -8,5 +8,9 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    // Usamos el metodo __invoke cuando adminitremos una unica ruta
+    public function __invoke()
+    {
+        return "Bienvenido a la pagina HOME"; 
+    }
 }
