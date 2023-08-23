@@ -2,23 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
     public function index(){
-        return view('cursos/index'); 
+
+        // Colocamos una variable que recibira el modelo de Curso y retornara la variable que contiene todos los cursos
+        //$cursos = Curso::all();
+        $cursos = Curso::paginate();
+        // return $cursos;
+
+        return view('cursos/index', compact('cursos')); 
     }
 
     public function create(){
         return view('cursos.create');
     }
 
-    public function show($curso){
-        return view('cursos.show', ['curso' => $curso]);
+    // Que me busque por id en la URL de la pagina
+    public function show($id){   
 
-        // return view('cursos.show', compact('curso'));  Otra forma 
-
+        $curso = Curso::find($id);
+        
+        return view('cursos.show', compact('curso')); 
+         // return view('cursos.show', ['curso' => $curso]); Otra forma 
 
     }
 

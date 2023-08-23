@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+// Para mutar
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,4 +45,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Convertir el que los campos en name se guarde en misuclas en la BD.
+    protected function name(): Attribute
+    {
+        return new Attribute(
+        // ----- ACCESORES ----
+            get: fn ($value) => ucwords($value),
+
+        // ----- MUTADORES------
+            set: fn ($value) => strtolower($value)            
+        );
+    }
 }
