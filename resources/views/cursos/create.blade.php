@@ -9,10 +9,11 @@
 
         {{-- ENCARGADO DE GENERAR UN TOKEN --}}
         @csrf
+        {{-- Un label e input donde el nombre este validado y el value es para que si en los demas campos faltan datos, este se mantenga con el registro --}}
         <label>
             Nombre:
             <br> 
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{old('name')}}">
         </label>
         {{-- Para manejar errores de validaciones --}}
         @error('name')
@@ -25,7 +26,7 @@
         <label>
             Descripcion:
             <br> 
-            <textarea name="description" rows="5"></textarea>
+            <textarea name="description" rows="5">{{old('description')}}</textarea>
         </label>
         {{-- Para manejar errores de validaciones --}}
         @error('description')
@@ -38,7 +39,7 @@
         <label>
             Categoria:
             <br> 
-            <input type="text" name="categoria">
+            <input type="text" name="categoria" value="{{old('categoria')}}">
         </label>
         {{-- Para manejar errores de validaciones --}}
         @error('categoria')

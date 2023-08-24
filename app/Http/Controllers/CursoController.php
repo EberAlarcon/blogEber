@@ -28,8 +28,8 @@ class CursoController extends Controller
         // -------- VALIDACIONES----------
         // -------------------------------
         $request->validate([
-            'name'=> 'required',
-            'description' => 'required',
+            'name'=> 'required | max:10',
+            'description' => 'required | min:10',
             'categoria' => 'required'
         ]);
 
@@ -69,6 +69,15 @@ class CursoController extends Controller
     public function update (Curso $curso, Request $request){
         //return $curso;  // Para que retorne lo que se esta enviando
         //return $request->all(); // Para que retorne todo lo que se está enviando
+
+        // -------- VALIDACIONES----------
+        // -------------------------------
+        $request->validate([
+            'name'=> 'required',
+            'description' => 'required',
+            'categoria' => 'required'
+        ]);
+
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
