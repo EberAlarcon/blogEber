@@ -23,8 +23,9 @@ class CursoController extends Controller
     public function create(){
         return view('cursos.create');
     }
-
-    //Metodo que se va a encargar de guardar datos de cursos
+// ---------------------------------------------------------------------------------
+// ------------ Metodo que se va a encargar de guardar datos de cursos -------------
+// ---------------------------------------------------------------------------------
     public function store(StoreCurso $request){
 
         // -------- VALIDACIONES----------
@@ -35,20 +36,34 @@ class CursoController extends Controller
         //     'categoria' => 'required'
         // ]);
 
-
         // return $request->all();  //Para revisar en un json lo que se está enviando
-        $curso = new Curso();
-        $curso->name = $request->name;
-        $curso->description = $request->description;
-        $curso->categoria = $request->categoria;
+
+        // ---------------- Forma basica de guardar datos -----------------
+        // $curso = new Curso();
+        // $curso->name = $request->name;
+        // $curso->description = $request->description;
+        // $curso->categoria = $request->categoria;
+
+        // $curso->save();
+        // ----------------------------------------------------------------
+
+
+        // $curso = Curso::created([
+        //     'name' => $request-> name,
+        //     'description' => $request-> description,
+        //     'categoria' => $request-> categoria
+        // ]);
+
+        $curso = Curso::create($request->all());
 
         // return $curso; // Revisar lo que se quiere enviar
-        $curso->save();
         // Que se redireccione al curso creado
         return Redirect()->route('cursos.show', $curso);
     }
     
-    // Que me busque por id en la URL de la pagina
+// -----------------------------------------------------------------------------------
+// ------------------- Que me busque por id en la URL de la pagina -------------------
+// -----------------------------------------------------------------------------------
     public function show(Curso $curso){   
 
         //$curso = Curso::find($curso);
@@ -58,6 +73,7 @@ class CursoController extends Controller
 
     }
 
+// -------------------------------------------------------------
 // -------------------- Metodo para editar registros------------
 // -------------------------------------------------------------
     public function edit(Curso $curso){
@@ -79,14 +95,21 @@ class CursoController extends Controller
             'description' => 'required',
             'categoria' => 'required'
         ]);
+        
+        // ---------------- Forma basica de guardar datos -----------------
+        // $curso->name = $request->name;
+        // $curso->description = $request->description;
+        // $curso->categoria = $request->categoria;
 
-        $curso->name = $request->name;
-        $curso->description = $request->description;
-        $curso->categoria = $request->categoria;
+        // $curso->save();
+
+        $curso->update($request->all());
 
         // return $curso; // Para saber lo que se esta queriendo actualizar
-        $curso->save();
+       
         // // Que se redireccione al curso creado
+
+
         return Redirect()->route('cursos.show', $curso);
 
     }
