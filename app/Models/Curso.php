@@ -21,4 +21,11 @@ class Curso extends Model
 // --------------------------------------------------------------------------------  
     // protected $guarded = ['status'];
     protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+         return 'slug';
+        
+    }
+
 }
