@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 
 // Especificar el controlador de CursoController
 use App\Http\Controllers\CursoController;
+use Illuminate\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,17 @@ Route::controller(CursoController::class)-> group(function(){
     Route::get('cursos', 'index')->name('cursos.index');
 
     Route::get('cursos/create', 'create')->name('cursos.create');
+    //Para crear los datos
+    Route::post('cursos', 'store')->name('cursos.store');
+
+    Route::get('cursos/{curso}', 'show')->name('cursos.show');
+
+// -------------------Para actualizar los regitros --------------------
+//---------------------------------------------------------------------
+    Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
+    Route::put('cursos/{curso}', 'update')->name(('cursos.update'));
     
-    Route::get('cursos/{id}', 'show')->name('cursos.show');
+
     
     Route::get('cursos/{curso}/{categoria?}', 'showsCurses' )->name('');
 });

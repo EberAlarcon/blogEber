@@ -6,6 +6,9 @@
     <h1>Su curso es de {{$curso->name}} </h1>
     
     <a href="{{route('cursos.index')}}">Volver a cursos</a>
+    <br>
+
+    <a href="{{route('cursos.edit', $curso)}}">Editar cursos</a>
 
     <p><strong>Categoria: {{$curso->categoria}} </strong></p>
     <p> {{$curso->description}} </p>
