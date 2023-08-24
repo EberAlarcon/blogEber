@@ -43,8 +43,14 @@ Route::controller(CursoController::class)-> group(function(){
 //---------------------------------------------------------------------
     Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
     Route::put('cursos/{curso}', 'update')->name(('cursos.update'));
-    
+
+//---------------------------------------------------------------------
+// -------------------- Para eliminar los regitros --------------------
+//---------------------------------------------------------------------    
+    Route::delete('cursos/{curso}', 'delete')->name('cursos.delete');
 
     
     Route::get('cursos/{curso}/{categoria?}', 'showsCurses' )->name('');
+
+    
 });

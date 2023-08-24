@@ -95,7 +95,7 @@ class CursoController extends Controller
             'description' => 'required',
             'categoria' => 'required'
         ]);
-        
+
         // ---------------- Forma basica de guardar datos -----------------
         // $curso->name = $request->name;
         // $curso->description = $request->description;
@@ -114,6 +114,17 @@ class CursoController extends Controller
 
     }
 
+// ------------------------------------------------------------------------------
+// ------------------------- Metodo para eliminar registros ---------------------
+// ------------------------------------------------------------------------------
+
+public function delete (Curso $curso){
+    $curso->delete();
+
+    return redirect()->route('cursos.index', $curso);
+
+
+}
 
 
     public function showsCurses($curso, $categoria = null){

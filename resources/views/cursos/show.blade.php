@@ -12,6 +12,12 @@
 
     <p><strong>Categoria: {{$curso->categoria}} </strong></p>
     <p> {{$curso->description}} </p>
+
+    <form action="{{route('cursos.delete', $curso)}}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit">Eliminar</button>
+    </form>
 @endsection
 
 
