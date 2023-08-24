@@ -26,39 +26,39 @@ Route::get('/', HomeController::class);
 // // --------------------------- Crear un grupo de rutas --------------------------
 // // ------------------------------------------------------------------------------
 
-// Route::controller(CursoController::class)-> group(function(){
+ Route::controller(CursoController::class)-> group(function(){
 
-//     Route::get('cursos', 'index')->name('cursos.index');
+     Route::get('cursos', 'index')->name('cursos.index');
 // //-------------------------------------------------------------------------
 // //---------------------Ruta para crear los datos --------------------------
 // //-------------------------------------------------------------------------
-//     Route::get('cursos/create', 'create')->name('cursos.create');
-//     Route::post('cursos', 'store')->name('cursos.store');
+     Route::get('cursos/create', 'create')->name('cursos.create');
+     Route::post('cursos', 'store')->name('cursos.store');
 
 // // ----------------------------------------------------------------------------
 // // ----------------Ruta para ver un registro en particular --------------------
 // // ----------------------------------------------------------------------------
-//     Route::get('cursos/{curso}', 'show')->name('cursos.show');
+     Route::get('cursos/{curso}', 'show')->name('cursos.show');
     
 // //---------------------------------------------------------------------
 // // -------------------Para actualizar los regitros --------------------
 // //---------------------------------------------------------------------
-//     Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
-//     Route::put('cursos/{curso}', 'update')->name(('cursos.update'));
+     Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
+     Route::put('cursos/{curso}', 'update')->name(('cursos.update'));
 
 // //---------------------------------------------------------------------
 // // -------------------- Para eliminar los regitros --------------------
 // //---------------------------------------------------------------------    
-//     Route::delete('cursos/{curso}', 'delete')->name('cursos.delete');
+    Route::delete('cursos/{curso}', 'delete')->name('cursos.delete');
 
     
 //     Route::get('cursos/{curso}/{categoria?}', 'showsCurses' )->name('');   
-// });
+ });
 
 // ----------------------------------------------------------------------------
 // ----------------------- Otra manera de crear rutas -------------------------
 // ----------------------------------------------------------------------------
-Route::resource('cursos', CursoController::class);
+// Route::resource('cursos', CursoController::class);
 
 // ----------------------------------------------------------------------------
 // -------------- Para modificar las rutas con las variables ------------------

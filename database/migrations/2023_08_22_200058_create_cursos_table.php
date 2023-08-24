@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id(); // Genera un id tipo entero incremental 
             $table->string('name'); // Genera una columna tipo varchar max 255
+            $table->string('slug');
             $table->text('description'); // Genera una columna para un infinito de caracteres
             $table->text('categoria');
             $table->timestamps(); // Genera dos columnas created_at updated_at
