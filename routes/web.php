@@ -30,11 +30,15 @@ Route::controller(CursoController::class)-> group(function(){
     Route::get('cursos', 'index')->name('cursos.index');
 
     Route::get('cursos/create', 'create')->name('cursos.create');
-    //Para crear los datos
+//------------------Ruta para crear los datos--------------------------
     Route::post('cursos', 'store')->name('cursos.store');
 
+// ----------------------------------------------------------------------------
+// ----------------Ruta para ver un registro en particular --------------------
+// ----------------------------------------------------------------------------
     Route::get('cursos/{curso}', 'show')->name('cursos.show');
-
+    
+//---------------------------------------------------------------------
 // -------------------Para actualizar los regitros --------------------
 //---------------------------------------------------------------------
     Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');

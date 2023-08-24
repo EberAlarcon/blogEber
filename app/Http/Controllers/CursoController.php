@@ -24,6 +24,16 @@ class CursoController extends Controller
 
     //Metodo que se va a encargar de guardar datos de cursos
     public function store(Request $request){
+
+        // -------- VALIDACIONES----------
+        // -------------------------------
+        $request->validate([
+            'name'=> 'required',
+            'description' => 'required',
+            'categoria' => 'required'
+        ]);
+
+
         // return $request->all();  //Para revisar en un json lo que se está enviando
         $curso = new Curso();
         $curso->name = $request->name;

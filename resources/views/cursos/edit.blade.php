@@ -7,10 +7,10 @@
 
     <form action="{{route('cursos.update', $curso)}}" method="POST">
 
-        
+        {{-- ENCARGADO DE GENERAR UN TOKEN --}}
         @csrf
 
-        {{-- ENCARGADO DE GENERAR UN TOKEN --}}
+        {{-- ENCARGADO DEL METODO PUT EN HTML --}}
         @method('put')
         <label>
             Nombre:
