@@ -6,6 +6,8 @@ use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Http\Requests\StoreCurso;
+
 class CursoController extends Controller
 {
     public function index(){
@@ -23,15 +25,15 @@ class CursoController extends Controller
     }
 
     //Metodo que se va a encargar de guardar datos de cursos
-    public function store(Request $request){
+    public function store(StoreCurso $request){
 
         // -------- VALIDACIONES----------
         // -------------------------------
-        $request->validate([
-            'name'=> 'required | max:10',
-            'description' => 'required | min:10',
-            'categoria' => 'required'
-        ]);
+        // $request->validate([
+        //     'name'=> 'required | max:10',
+        //     'description' => 'required | min:10',
+        //     'categoria' => 'required'
+        // ]);
 
 
         // return $request->all();  //Para revisar en un json lo que se está enviando
