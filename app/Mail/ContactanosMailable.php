@@ -18,9 +18,10 @@ class ContactanosMailable extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($contacto)
     {
         //
+        $this->contacto= $contacto;
     }
 
     /**
@@ -32,6 +33,8 @@ class ContactanosMailable extends Mailable
             subject: 'Informacion de contacto',
         );
     }
+
+    public $contacto;
 
     /**
      * Get the message content definition.

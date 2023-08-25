@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use Illuminate\Support\Facades\Route;
 
 // Especificar el controlador a utilizar
@@ -63,12 +64,8 @@ Route::get('/', HomeController::class)->name('home');
 // //--------------------------------------------------------------------------------
 // // ---------------------------- Ruta de contactanos ------------------------------
 // //-------------------------------------------------------------------------------- 
-     Route::get('contactanos', function(){
-          $correo = new ContactanosMailable;
-          Mail::to('alarconeber2001@gmail.com')->send($correo);
-
-          return 'Mensaje enviado';
-     });
+     Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+     Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
 
     
