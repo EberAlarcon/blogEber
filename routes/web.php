@@ -20,7 +20,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 // // ------------------------------------------------------------------------------
 // // --------------------------- Crear un grupo de rutas --------------------------
@@ -44,12 +44,17 @@ Route::get('/', HomeController::class);
 // // -------------------Para actualizar los regitros --------------------
 // //---------------------------------------------------------------------
      Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
-     Route::put('cursos/{curso}', 'update')->name(('cursos.update'));
+     Route::put('cursos/{curso}', 'update')->name('cursos.update');
 
 // //---------------------------------------------------------------------
 // // -------------------- Para eliminar los regitros --------------------
 // //---------------------------------------------------------------------    
     Route::delete('cursos/{curso}', 'delete')->name('cursos.delete');
+
+// //--------------------------------------------------------------------------------
+// // -------------------- Ruta que la pagina sera solo estatica --------------------
+// //-------------------------------------------------------------------------------- 
+    Route::view('nosotros', 'nosotros')->name('nosotros');
 
     
 //     Route::get('cursos/{curso}/{categoria?}', 'showsCurses' )->name('');   
