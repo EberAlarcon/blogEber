@@ -9,6 +9,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
 use Illuminate\Routing\Route as RoutingRoute;
 
+// Importar la ruta de ContactanosMailable
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +59,17 @@ Route::get('/', HomeController::class)->name('home');
 // // -------------------- Ruta que la pagina sera solo estatica --------------------
 // //-------------------------------------------------------------------------------- 
     Route::view('nosotros', 'nosotros')->name('nosotros');
+
+// //--------------------------------------------------------------------------------
+// // ---------------------------- Ruta de contactanos ------------------------------
+// //-------------------------------------------------------------------------------- 
+     Route::get('contactanos', function(){
+          $correo = new ContactanosMailable;
+          Mail::to('alarconeber2001@gmail.com')->send($correo);
+
+          return 'Mensaje enviado';
+     });
+
 
     
 //     Route::get('cursos/{curso}/{categoria?}', 'showsCurses' )->name('');   
